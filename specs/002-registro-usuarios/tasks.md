@@ -28,8 +28,8 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 **Purpose**: El proyecto ya está inicializado (Next.js 14, TypeScript, Tailwind, Vitest + RTL). Solo se preparan las fronteras de tipos.
 
-- [ ] T001 Verificar entorno de pruebas ejecutando `npm run test -- --run` y confirmar que la suite actual (login) está verde antes de comenzar.
-- [ ] T002 [P] Agregar los tipos `RegisterCredentials` y `RegisterResult` (propiedades en `PascalCase`) en [lib/types/Auth.ts](../../lib/types/Auth.ts) según data-model.md.
+- [X] T001 Verificar entorno de pruebas ejecutando `npm run test -- --run` y confirmar que la suite actual (login) está verde antes de comenzar.
+- [X] T002 [P] Agregar los tipos `RegisterCredentials` y `RegisterResult` (propiedades en `PascalCase`) en [lib/types/Auth.ts](../../lib/types/Auth.ts) según data-model.md.
 
 ---
 
@@ -41,13 +41,13 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ### Tests (escribir primero, deben FALLAR)
 
-- [ ] T003 [P] Escribir tests unitarios de validaciones en [lib/utils/Validation.test.ts](../../lib/utils/Validation.test.ts) para `validateRequired`, `validateFullName` y `validatePasswordsMatch` (casos válidos/ inválidos, espacios en blanco).
-- [ ] T004 [P] Escribir tests del servicio de registro en [lib/services/AuthService.test.ts](../../lib/services/AuthService.test.ts) cubriendo los casos C1–C4 del contrato (éxito con correo nuevo, duplicado `tucorreo@ejemplo.com`, login posterior con el correo registrado, `isAuthenticated()` no cambia por registrar).
+- [X] T003 [P] Escribir tests unitarios de validaciones en [lib/utils/Validation.test.ts](../../lib/utils/Validation.test.ts) para `validateRequired`, `validateFullName` y `validatePasswordsMatch` (casos válidos/ inválidos, espacios en blanco).
+- [X] T004 [P] Escribir tests del servicio de registro en [lib/services/AuthService.test.ts](../../lib/services/AuthService.test.ts) cubriendo los casos C1–C4 del contrato (éxito con correo nuevo, duplicado `tucorreo@ejemplo.com`, login posterior con el correo registrado, `isAuthenticated()` no cambia por registrar).
 
 ### Implementación (después de que los tests fallen)
 
-- [ ] T005 [P] Implementar `validateRequired`, `validateFullName` y `validatePasswordsMatch` en [lib/utils/Validation.ts](../../lib/utils/Validation.ts) reutilizando el patrón de `validateEmail`/`validatePassword` (funciones puras). Hace pasar T003.
-- [ ] T006 Extender `IAuthService` y el objeto `AuthService` con `register(credentials: RegisterCredentials): Promise<RegisterResult>` en [lib/services/AuthService.ts](../../lib/services/AuthService.ts): delay simulado, verificación de duplicado (case-insensitive) contra `MOCK_USERS`, alta del usuario y retorno de `RegisterResult`. Depende de T002, T005. Hace pasar T004.
+- [X] T005 [P] Implementar `validateRequired`, `validateFullName` y `validatePasswordsMatch` en [lib/utils/Validation.ts](../../lib/utils/Validation.ts) reutilizando el patrón de `validateEmail`/`validatePassword` (funciones puras). Hace pasar T003.
+- [X] T006 Extender `IAuthService` y el objeto `AuthService` con `register(credentials: RegisterCredentials): Promise<RegisterResult>` en [lib/services/AuthService.ts](../../lib/services/AuthService.ts): delay simulado, verificación de duplicado (case-insensitive) contra `MOCK_USERS`, alta del usuario y retorno de `RegisterResult`. Depende de T002, T005. Hace pasar T004.
 
 **Checkpoint**: Validaciones y servicio de registro verdes; listos para las historias.
 
@@ -61,15 +61,15 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ### Tests for User Story 1 (escribir primero, deben FALLAR) ⚠️
 
-- [ ] T007 [P] [US1] Escribir test de éxito de registro en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): con datos válidos y términos aceptados, al enviar se llama `AuthService.register` y se navega a `/login?registered=true` (mock de `useRouter`).
-- [ ] T008 [P] [US1] Escribir test del mensaje de éxito en login: la página de login muestra un banner de éxito visible cuando `registered=true` (mock de `useSearchParams`), en [app/login.test.tsx](../../app/login.test.tsx) o nuevo archivo de test de la página de login.
-- [ ] T009 [P] [US1] Escribir test de integración de la página principal en [app/register.test.tsx](../../app/register.test.tsx): la ruta `/` renderiza el formulario de Registro (encabezado "Crea tu cuenta").
+- [X] T007 [P] [US1] Escribir test de éxito de registro en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): con datos válidos y términos aceptados, al enviar se llama `AuthService.register` y se navega a `/login?registered=true` (mock de `useRouter`).
+- [X] T008 [P] [US1] Escribir test del mensaje de éxito en login: la página de login muestra un banner de éxito visible cuando `registered=true` (mock de `useSearchParams`), en [app/login.test.tsx](../../app/login.test.tsx) o nuevo archivo de test de la página de login.
+- [X] T009 [P] [US1] Escribir test de integración de la página principal en [app/register.test.tsx](../../app/register.test.tsx): la ruta `/` renderiza el formulario de Registro (encabezado "Crea tu cuenta").
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Crear el componente `RegisterForm` base en [components/RegisterForm.tsx](../../components/RegisterForm.tsx) (client component) con los campos Nombre completo, Correo, Contraseña, Confirmar contraseña y checkbox de términos, reutilizando `Input` y `Button`; integrar `AuthService.register` y navegación a `/login?registered=true` en éxito. Depende de T006. Hace pasar T007.
-- [ ] T011 [US1] Crear `app/login/page.tsx` reubicando el login existente (BrandPanel + `LoginForm`) en la ruta `/login`, y renderizar un banner de éxito cuando `useSearchParams().get('registered') === 'true'`. Hace pasar T008. (Ver [app/page.tsx](../../app/page.tsx) como referencia del layout.)
-- [ ] T012 [US1] Modificar [app/page.tsx](../../app/page.tsx) para que la ruta `/` renderice la página de Registro (BrandPanel + `RegisterForm`) con el layout dividido. Hace pasar T009.
+- [X] T010 [US1] Crear el componente `RegisterForm` base en [components/RegisterForm.tsx](../../components/RegisterForm.tsx) (client component) con los campos Nombre completo, Correo, Contraseña, Confirmar contraseña y checkbox de términos, reutilizando `Input` y `Button`; integrar `AuthService.register` y navegación a `/login?registered=true` en éxito. Depende de T006. Hace pasar T007.
+- [X] T011 [US1] Crear `app/login/page.tsx` reubicando el login existente (BrandPanel + `LoginForm`) en la ruta `/login`, y renderizar un banner de éxito cuando `useSearchParams().get('registered') === 'true'`. Hace pasar T008. (Ver [app/page.tsx](../../app/page.tsx) como referencia del layout.)
+- [X] T012 [US1] Modificar [app/page.tsx](../../app/page.tsx) para que la ruta `/` renderice la página de Registro (BrandPanel + `RegisterForm`) con el layout dividido. Hace pasar T009.
 
 **Checkpoint**: Registro exitoso funcional de extremo a extremo (/ → /login con mensaje). MVP entregable.
 
@@ -83,17 +83,17 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ### Tests for User Story 2 (escribir primero, deben FALLAR) ⚠️
 
-- [ ] T013 [P] [US2] Escribir test de campos obligatorios vacíos en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): al enviar sin datos, cada campo muestra error inline y NO se llama `AuthService.register`.
-- [ ] T014 [P] [US2] Escribir test de correo inválido en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra "Formato de correo inválido".
-- [ ] T015 [P] [US2] Escribir test de contraseña corta en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra el mensaje de mínimo 8 caracteres.
-- [ ] T016 [P] [US2] Escribir test de confirmación distinta en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra "Las contraseñas no coinciden".
-- [ ] T017 [P] [US2] Escribir test de términos no aceptados en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra el error de términos y bloquea el envío.
-- [ ] T018 [P] [US2] Escribir test de correo duplicado en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): cuando `register` devuelve `{ Success: false, Error }`, se muestra "Este correo ya está registrado" inline.
+- [X] T013 [P] [US2] Escribir test de campos obligatorios vacíos en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): al enviar sin datos, cada campo muestra error inline y NO se llama `AuthService.register`.
+- [X] T014 [P] [US2] Escribir test de correo inválido en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra "Formato de correo inválido".
+- [X] T015 [P] [US2] Escribir test de contraseña corta en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra el mensaje de mínimo 8 caracteres.
+- [X] T016 [P] [US2] Escribir test de confirmación distinta en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra "Las contraseñas no coinciden".
+- [X] T017 [P] [US2] Escribir test de términos no aceptados en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): muestra el error de términos y bloquea el envío.
+- [X] T018 [P] [US2] Escribir test de correo duplicado en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): cuando `register` devuelve `{ Success: false, Error }`, se muestra "Este correo ya está registrado" inline.
 
 ### Implementation for User Story 2
 
-- [ ] T019 [US2] Añadir validación en tiempo real (`useEffect`) y validación final en `handleSubmit` en [components/RegisterForm.tsx](../../components/RegisterForm.tsx) usando `validateRequired`, `validateEmail`, `validatePassword`, `validatePasswordsMatch` y la verificación de términos; renderizar errores inline vía prop `error` de `Input` y conservar los datos ingresados. Depende de T010. Hace pasar T013–T017.
-- [ ] T020 [US2] Manejar el `RegisterResult` de error (correo duplicado) mostrando mensaje inline/form-level en [components/RegisterForm.tsx](../../components/RegisterForm.tsx). Hace pasar T018.
+- [X] T019 [US2] Añadir validación en tiempo real (`useEffect`) y validación final en `handleSubmit` en [components/RegisterForm.tsx](../../components/RegisterForm.tsx) usando `validateRequired`, `validateEmail`, `validatePassword`, `validatePasswordsMatch` y la verificación de términos; renderizar errores inline vía prop `error` de `Input` y conservar los datos ingresados. Depende de T010. Hace pasar T013–T017.
+- [X] T020 [US2] Manejar el `RegisterResult` de error (correo duplicado) mostrando mensaje inline/form-level en [components/RegisterForm.tsx](../../components/RegisterForm.tsx). Hace pasar T018.
 
 **Checkpoint**: Validaciones inline completas; envíos inválidos bloqueados.
 
@@ -109,12 +109,12 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ### Tests for User Story 4 (escribir primero, deben FALLAR) ⚠️
 
-- [ ] T021 [P] [US4] Escribir test de alerts sociales en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): click en Google y en Apple invoca `alert` con el texto exacto "Próximamente" (mock de `window.alert`).
-- [ ] T022 [P] [US4] Escribir test del enlace de login en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): existe el enlace "¿Ya tienes cuenta? Inicia sesión" que apunta/navega a `/login`.
+- [X] T021 [P] [US4] Escribir test de alerts sociales en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): click en Google y en Apple invoca `alert` con el texto exacto "Próximamente" (mock de `window.alert`).
+- [X] T022 [P] [US4] Escribir test del enlace de login en [components/RegisterForm.test.tsx](../../components/RegisterForm.test.tsx): existe el enlace "¿Ya tienes cuenta? Inicia sesión" que apunta/navega a `/login`.
 
 ### Implementation for User Story 4
 
-- [ ] T023 [US4] Añadir los botones Google/Apple con handler que invoque `alert('Próximamente')` (texto exacto) y el enlace "¿Ya tienes cuenta? Inicia sesión" hacia `/login` en [components/RegisterForm.tsx](../../components/RegisterForm.tsx), sin alterar el comportamiento de `SocialLogins` usado por el login. Hace pasar T021, T022.
+- [X] T023 [US4] Añadir los botones Google/Apple con handler que invoque `alert('Próximamente')` (texto exacto) y el enlace "¿Ya tienes cuenta? Inicia sesión" hacia `/login` en [components/RegisterForm.tsx](../../components/RegisterForm.tsx), sin alterar el comportamiento de `SocialLogins` usado por el login. Hace pasar T021, T022.
 
 **Checkpoint**: Accesos secundarios y navegación a login operativos.
 
@@ -128,10 +128,10 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ### Implementation for User Story 3
 
-- [ ] T024 [P] [US3] Ajustar [components/BrandPanel.tsx](../../components/BrandPanel.tsx) para aceptar props opcionales de `headline`/`subtext` con valores por defecto = login, y usar en `/` los textos del frame "04 · Registro" ("Comienza tu camino financiero." + subtexto). No debe romper los tests del login.
-- [ ] T025 [US3] Aplicar tokens de diseño y estilos al formulario en [components/RegisterForm.tsx](../../components/RegisterForm.tsx): encabezado "Crea tu cuenta" + subtítulo, colores (`brand-primary`, `neutral-900/500/300`, enlaces `#EF5226`), radios 12px inputs/botón y 6px checkbox, icono de mostrar/ocultar contraseña; reutilizar [lib/constants/DesignTokens.ts](../../lib/constants/DesignTokens.ts).
-- [ ] T026 [US3] Garantizar responsive en [app/page.tsx](../../app/page.tsx) y el layout: BrandPanel `hidden lg:flex` (solo desktop) y formulario a ancho completo en mobile (FR-015).
-- [ ] T027 [US3] Auditoría manual de fidelidad visual y responsive contra el frame "04 · Registro" siguiendo la tabla de verificación de [quickstart.md](./quickstart.md); registrar discrepancias y corregirlas (SC-003, SC-004, SC-005).
+- [X] T024 [P] [US3] Ajustar [components/BrandPanel.tsx](../../components/BrandPanel.tsx) para aceptar props opcionales de `headline`/`subtext` con valores por defecto = login, y usar en `/` los textos del frame "04 · Registro" ("Comienza tu camino financiero." + subtexto). No debe romper los tests del login.
+- [X] T025 [US3] Aplicar tokens de diseño y estilos al formulario en [components/RegisterForm.tsx](../../components/RegisterForm.tsx): encabezado "Crea tu cuenta" + subtítulo, tipografía Inter (Bold/SemiBold/Medium/Regular), colores (`brand-primary`, `neutral-900/500/300`, enlaces `#EF5226`), radios 12px inputs/botón y 6px checkbox, icono de mostrar/ocultar contraseña; reutilizar [lib/constants/DesignTokens.ts](../../lib/constants/DesignTokens.ts).
+- [X] T026 [US3] Garantizar responsive en [app/page.tsx](../../app/page.tsx) y el layout: BrandPanel `hidden lg:flex` (solo desktop) y formulario a ancho completo en mobile (FR-015).
+- [X] T027 [US3] Auditoría manual de fidelidad visual y responsive contra el frame "04 · Registro" siguiendo la tabla de verificación de [quickstart.md](./quickstart.md); registrar discrepancias y corregirlas (SC-003, SC-004, SC-005).
 
 **Checkpoint**: Pantalla fiel al diseño y responsive.
 
@@ -139,8 +139,8 @@ Proyecto único Next.js 14 App Router en la raíz del repo: `app/`, `components/
 
 ## Phase 7: Polish & Cross-Cutting Concerns
 
-- [ ] T028 Ejecutar `npm run test -- --run` y confirmar que toda la suite pasa, incluidos los tests existentes del login (sin regresiones).
-- [ ] T029 [P] Refactor final de [components/RegisterForm.tsx](../../components/RegisterForm.tsx) aplicando DRY/SOLID (extraer estado/validación repetida si corresponde) sin cambiar comportamiento; reverificar tests verdes.
+- [X] T028 Ejecutar `npm run test -- --run` y confirmar que toda la suite pasa, incluidos los tests existentes del login (sin regresiones).
+- [X] T029 [P] Refactor final de [components/RegisterForm.tsx](../../components/RegisterForm.tsx) aplicando DRY/SOLID (extraer estado/validación repetida si corresponde) sin cambiar comportamiento; reverificar tests verdes.
 
 ---
 

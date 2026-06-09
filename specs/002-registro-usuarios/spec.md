@@ -115,7 +115,7 @@ Como persona usuaria, quiero ver los botones de Google y Apple, y el enlace para
 - **FR-012**: Ante un registro exitoso, el sistema DEBE redirigir a `/login` y mostrar un mensaje de éxito visible para la persona usuaria.
 - **FR-013**: El sistema DEBE proporcionar botones de "Google" y "Apple" que, al ser presionados, muestren un aviso con el texto exacto "Próximamente".
 - **FR-014**: El sistema DEBE incluir el enlace "¿Ya tienes cuenta? Inicia sesión" que navega a `/login`.
-- **FR-015**: El sistema DEBE presentar un diseño responsive: en escritorio se muestran dos paneles (Panel de Marca a la izquierda y Panel de Formulario a la derecha); en mobile se muestra únicamente el Panel de Formulario.
+- **FR-015**: El sistema DEBE presentar un diseño responsive: en escritorio (ancho ≥ 1024px) se muestran dos paneles (Panel de Marca a la izquierda y Panel de Formulario a la derecha); por debajo de 1024px (tablet y mobile) se muestra únicamente el Panel de Formulario.
 - **FR-016**: El Panel de Marca DEBE incluir un fondo con degradado lineal naranja (desde `rgb(255, 138, 101)` hasta `rgb(239, 82, 38)`), el logo "KynWallet", el titular "Comienza tu camino financiero.", el subtexto descriptivo y un mockup de tarjeta "Kyn Card".
 - **FR-017**: El Panel de Formulario DEBE mostrar el encabezado "Crea tu cuenta" y el subtítulo "Completa tus datos para comenzar".
 - **FR-018**: La pantalla DEBE usar la tipografía **Inter** en sus variantes (Bold, SemiBold, Medium, Regular) según el diseño.
@@ -127,9 +127,9 @@ Como persona usuaria, quiero ver los botones de Google y Apple, y el enlace para
 
 ### Entidades Clave *(incluir si la funcionalidad involucra datos)*
 
-- **RegistrationData**: Representa los datos capturados en el formulario de registro. Atributos: `FullName`, `Email`, `Password`, `ConfirmPassword`, `AcceptedTerms`.
+- **RegisterCredentials**: Representa los datos capturados en el formulario de registro. Atributos: `FullName`, `Email`, `Password`, `ConfirmPassword`, `AcceptedTerms`.
 - **ValidationResult**: Representa el resultado de validar el formulario. Atributos: estado de validez por campo y los mensajes inline asociados.
-- **UIStyles**: Definición de los tokens de diseño (colores, tipografía, espaciados, radios) extraídos del frame "04 · Registro" de Figma.
+- **DesignTokens**: Definición de los tokens de diseño (colores, tipografía, espaciados, radios) extraídos del frame "04 · Registro" de Figma.
 
 ## Criterios de Éxito *(obligatorio)*
 
@@ -139,7 +139,7 @@ Como persona usuaria, quiero ver los botones de Google y Apple, y el enlace para
 - **SC-002**: El 100% de los intentos de envío con al menos un dato inválido son bloqueados y muestran el mensaje inline correspondiente junto al campo afectado.
 - **SC-003**: La pantalla de Registro coincide visualmente en al menos un 95% con el frame "04 · Registro" de Figma en cuanto a disposición, colores y tipografía.
 - **SC-004**: El 100% de los elementos de entrada respetan los radios de borde del diseño (12px en inputs y botón principal, 6px en el checkbox).
-- **SC-005**: En escritorio (ancho ≥ 1024px) se muestran los dos paneles; en mobile (ancho < 768px) se muestra únicamente el formulario, en el 100% de los casos evaluados.
+- **SC-005**: En escritorio (ancho ≥ 1024px) se muestran los dos paneles; por debajo de 1024px (tablet y mobile, ancho < 1024px) se muestra únicamente el formulario, en el 100% de los casos evaluados.
 - **SC-006**: Los botones de Google y Apple muestran el aviso con el texto exacto "Próximamente" en el 100% de las interacciones.
 - **SC-007**: El enlace "Inicia sesión" navega a `/login` en el 100% de las interacciones.
 - **SC-008**: Una persona usuaria puede completar el registro con datos válidos en menos de 2 minutos en su primer intento.
