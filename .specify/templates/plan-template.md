@@ -40,7 +40,25 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Derived from `.specify/memory/constitution.md` (v1.1.0). Each gate MUST be satisfied
+or justified in Complexity Tracking:
+
+- [ ] **I. TDD**: El plan prevé escribir pruebas (Vitest/RTL) antes del código de
+      producción y respetar el ciclo Rojo-Verde-Refactorización.
+- [ ] **II. SOLID**: El diseño respeta responsabilidad única e inversión de
+      dependencias; la UI no contiene lógica de negocio.
+- [ ] **III. Arquitectura Limpia**: Capas separadas (Dominio, Casos de Uso,
+      Interfaces/Adaptadores, Infraestructura) con dependencias hacia adentro.
+- [ ] **IV. DRY y YAGNI**: Sin duplicación de lógica ni abstracción especulativa;
+      solo lo requerido por el alcance actual.
+- [ ] **V. PascalCase**: Componentes, clases, tipos y archivos de artefacto principal
+      en `PascalCase`.
+- [ ] **VI. Sin dependencias externas**: No se añaden dependencias de runtime a
+      `package.json`; solo capacidades nativas o código propio.
+- [ ] **VII. Validación de entradas**: Toda entrada de usuario se valida en la
+      frontera antes de procesarse.
+- [ ] **VIII. Autenticación**: Las rutas protegidas exigen autenticación y rechazan
+      explícitamente el acceso no autorizado.
 
 ## Project Structure
 
